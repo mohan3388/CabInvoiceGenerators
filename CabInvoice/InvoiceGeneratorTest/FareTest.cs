@@ -21,5 +21,14 @@ namespace InvoiceGeneratorTest
             double result= invoiceGenerator.CalculateMultipleFare(rides);
             Assert.AreEqual(result, 68);
         }
+        [TestMethod]
+       
+        public void InputInInteger_ShouldReturn_MultipleRides_TotalFair_InvoiceSummary()
+        {
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            Ride[] rides1 = { new Ride(15, 10), new Ride(35, 35), new Ride(25, 15) };
+            InvoiceSummery result = invoiceGenerator.CalculateMultipleRideSummery(rides1);
+            Assert.AreEqual(result.totalNumberOfRides, 3);
+        }
     }
 }

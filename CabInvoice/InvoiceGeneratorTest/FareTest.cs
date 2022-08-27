@@ -40,5 +40,13 @@ namespace InvoiceGeneratorTest
             InvoiceSummery expectedInvoice = invoice.GetRideInvoiceSummary("2001abc");
             Assert.AreEqual(5, expectedInvoice.totalNumberOfRides);
         }
+        [TestMethod]
+        public void InputInInteger_ShouldReturn_MultipleRides_TotalFair_InvoiceSummary_ForPremiumRides()
+        {
+            InvoiceGenerator invoice = new InvoiceGenerator(RideType.PREMIUM);
+            Ride[] preRides = { new Ride(15, 10), new Ride(35, 35), new Ride(25, 15), new Ride(15, 15), new Ride(50, 60) };
+            InvoiceSummery result = invoice.CalculateMultipleRideSummery(preRides);
+            Assert.AreEqual(result.totalNumberOfRides, preRides.Length);
+        }
     }
 }
